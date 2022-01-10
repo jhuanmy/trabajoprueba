@@ -25,8 +25,8 @@ $listablog = mysqli_query($con, "SELECT * FROM `post` join usuarios on post.id_u
 
         <?php
         foreach ($listablog as $items) {
-            echo " <div class='d-flex text-muted pt-3'>
-            <a href='verpost.php' class='list-group-item list-group-item-action d-flex gap-3 py-3' aria-current='true'>
+            echo " <div class='d-flex text-muted pt-3'>";?>
+            <a href='verpost.php?id_post=<?php echo $items['id_post'];?>'<?php echo " class='list-group-item list-group-item-action d-flex gap-3 py-3' aria-current='true'>
                 <div class='col-8'>
 
                     <p class='pb-3 mb-0 small lh-sm'>
@@ -46,7 +46,7 @@ $listablog = mysqli_query($con, "SELECT * FROM `post` join usuarios on post.id_u
 
 
        echo " <div class='text-center col-1'>
-        <img class='profile-user-img img-fluid img-circle' src='../../assets/img/blog.png'
+        <img class='profile-user-img img-fluid img-circle' src=".$items['imagen']."
              alt='User profile picture'>
     </div></a>
 

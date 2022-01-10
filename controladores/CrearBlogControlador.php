@@ -15,10 +15,7 @@ if (!isset($_POST['submit']))
     $contenido = $_POST['ingresocontenido'];
     $id_usuarioActual = $_SESSION['idusuario'];
     $fecha = date('m/d/Y h:i:s', time());
-    echo $titulo;
-    echo $contenido;
-    echo $id_usuarioActual;
-    echo $fecha;
+
     $con = mysqli_connect($host, $user, $pw)
     or die("Problemas al conectar al servidor");
 
@@ -26,10 +23,26 @@ if (!isset($_POST['submit']))
     or die("problemas al conectar con db");
 
 
-    mysqli_query($con, "INSERT INTO post (titulo,contenido,id_usuario)
- VALUE('" . $_POST['ingresotitulo'] . "','" . $_POST['ingresocontenido'] . "',$id_usuarioActual)");
+//    var_dump($_FILES);
+    $carpeta = "../documentos/";
+    $ruta = "/documentos/";
+    opendir($carpeta);
 
-//    VALUE('" . $_POST['ingresotitulo'] . "','" . $_POST['ingresocontenido'] . "', $id_usuarioActual,$fecha)");
+    $destino = $carpeta . mt_rand(50, 500) . $fecha = date("d-m-Y") . $_FILES['foto']['name'];
+
+    $ruta = substr($destino, 2, 200);
+//
+    copy($_FILES['foto']['tmp_name'], $destino);
+    echo "archivo subido exitosamente" . "<br>";
+    mysqli_query($con, "INSERT INTO post (titulo,contenido,id_usuario,imagen)
+ VALUE('" . $_POST['ingresotitulo'] . "','" . $_POST['ingresocontenido'] . "','$id_usuarioActual','$ruta')");
+//    $nombre=$_FILES['foto']['name'];
+//    echo "<img src=\"documentos/$nombre\"><br>";
+//
+//    echo $_FILES['foto']['name']."<br>";
+//    echo $_FILES['foto']['size']."bytes"."<br>";
+//    echo $_FILES['foto']['type'];
+
 
     echo "Datos insertados<br>";
     header("refresh:1;url=../web/cuentausuario/misblogs.php");
