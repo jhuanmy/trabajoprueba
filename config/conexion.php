@@ -1,4 +1,10 @@
 <?php
+$host="localhost";
+$user="root";
+$pw="";
+$db="trabajo";
+$con=mysqli_connect($host,$user,$pw)
+or die("Problemas al conectar al servidor");
 
-$config = include 'config.php';
-$conexion = new PDO('mysql:host=' . $config['db']['host'], $config['db']['user'], $config['db']['pass'], $config['db']['options']);
+mysqli_select_db($con,$db)
+or die("problemas al conectar con db");

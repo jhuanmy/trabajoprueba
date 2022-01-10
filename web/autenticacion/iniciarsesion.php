@@ -6,17 +6,17 @@ include '../../web/menu/menu.php'
 <body class="text-center">
 <div class="container col-4">
 <main class="form-signin text-center">
-    <form >
+    <form method="post" action="../../autenticacion/iniciarsesion.php">
         <img class="mb-3" src="../../assets/img/iniciar.png" alt="" width="72" height="57">
         <h1 class="h3 mb-3 fw-normal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Iniciar Sesion</font></font></h1>
 
         <div class="form-floating w-10">
-            <input type="email" class="form-control" id="floatingInput" placeholder="nombre@ejemplo.com">
+            <input type="email" class="form-control" name="correosesion" id="floatingInput" placeholder="nombre@ejemplo.com">
             <label for="floatingInput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dirección
                         de correo electrónico</font></font></label>
         </div>
         <div class="form-floating ">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña">
+            <input type="password" class="form-control" name="contrasenasesion" id="floatingPassword" placeholder="Contraseña">
             <label for="floatingPassword"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Contraseña</font></font></label>
         </div>
 

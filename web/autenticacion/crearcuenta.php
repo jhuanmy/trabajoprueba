@@ -6,25 +6,31 @@ include '../../web/menu/menu.php'
 <body class="text-center">
 <div class="container col-4">
 <main class="form-signin text-center">
-    <form >
+    <form   action="../../controladores/CrearUsuarioControlador.php" method="post">
         <img class="mb-4" src="../../assets/img/iniciar.png" alt="" width="72" height="57">
         <h1 class="h3 mb-3 fw-normal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Crear cuenta</font></font></h1>
         <div class="form-floating w-20">
-            <input type="email" class="form-control" id="floatingInput" placeholder="nombre@ejemplo.com">
-            <label for="floatingInput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nombres</font></font></label>
+            <input type="text" class="form-control" name="ingresarusuario"  id="ingresarusuarioid" placeholder="nombre@ejemplo.com">
+            <label for="ingresarusuarioid"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Usuario</font></font></label>
         </div>
         <div class="form-floating w-20">
-            <input type="email" class="form-control" id="floatingInput" placeholder="nombre@ejemplo.com">
-            <label for="floatingInput"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dirección
+            <input type="text" class="form-control" name="ingresonombre"  id="ingresonombreid" placeholder="nombre@ejemplo.com">
+            <label for="ingresonombre"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nombres</font></font></label>
+        </div>
+
+        <div class="form-floating w-20">
+            <input type="email" class="form-control" id="ingresocorreo" name="ingresocorreo" placeholder="nombre@ejemplo.com">
+            <label for="ingresocorreo"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dirección
                         de correo electrónico</font></font></label>
         </div>
         <div class="form-floating ">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña">
-            <label for="floatingPassword"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Contraseña</font></font></label>
+            <input type="password" class="form-control" id="ingresocontrasena" name="ingresocontrasena" placeholder="Contraseña">
+            <label for="ingresocontrasena"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Contraseña</font></font></label>
         </div>
 
 <hr>
-        <button class="w-75 btn btn-lg btn-primary " type="submit"><font style="vertical-align: inherit;"><font
+<!--        <input type="submit" name="" value="Actualizar">-->
+        <button class="w-75 btn btn-lg btn-primary " type="submit" value=""><font style="vertical-align: inherit;"><font
                         style="vertical-align: inherit;">Crear Cuenta</font></font></button>
         <p class="mt-5 mb-3 text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">©
                     2017–2022</font></font></p>

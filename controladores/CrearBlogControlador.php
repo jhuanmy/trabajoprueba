@@ -11,9 +11,14 @@ if (!isset($_POST['submit']))
 //    isset($_POST['email']) && !empty('email') &&
 //    $_POST['ingresocontrasena'] == $_POST['ingresocontrasena'])
 {
-    $usuario = $_POST['ingresonombre'];
-    $correoActual = $_POST['ingresocorreo'];
-
+    $titulo = $_POST['ingresotitulo'];
+    $contenido = $_POST['ingresocontenido'];
+    $id_usuarioActual = $_SESSION['idusuario'];
+    $fecha = date('m/d/Y h:i:s', time());
+    echo $titulo;
+    echo $contenido;
+    echo $id_usuarioActual;
+    echo $fecha;
     $con = mysqli_connect($host, $user, $pw)
     or die("Problemas al conectar al servidor");
 
@@ -21,30 +26,15 @@ if (!isset($_POST['submit']))
     or die("problemas al conectar con db");
 
 
-    mysqli_query($con, "INSERT INTO usuarios (usuario,nombre,correo,password)
- VALUE('" . $_POST['ingresarusuario'] . "','" . $_POST['ingresonombre'] . "','" . $_POST['ingresocorreo'] . "','" . $_POST['ingresocontrasena'] . "')");
+    mysqli_query($con, "INSERT INTO post (titulo,contenido,id_usuario)
+ VALUE('" . $_POST['ingresotitulo'] . "','" . $_POST['ingresocontenido'] . "',$id_usuarioActual)");
 
-$id_usuario=mysqli_query($con,"SELECT id_usuario FROM `usuarios` WHERE correo='$correoActual'");
-
-foreach ($id_usuario as $id){
-     $id['id_usuario'];
-
-}
-//  echo "id del usuario: $id_usuario  --------";
-
-
-    $_SESSION['usuarioActual'] = $usuario;
-    $_SESSION['idusuario'] =$id['id_usuario'];
-    echo $_SESSION['usuarioActual']. "<br>";
-    echo "sesion ".$_SESSION['idusuario']. "<br>";
-
+//    VALUE('" . $_POST['ingresotitulo'] . "','" . $_POST['ingresocontenido'] . "', $id_usuarioActual,$fecha)");
 
     echo "Datos insertados<br>";
-    header("refresh:1;url=../web/home.php");
+    header("refresh:1;url=../web/cuentausuario/misblogs.php");
 //    header("location: ../web/home.php");
 
 } else {
     echo "datos incompletos";
 }
-
-
