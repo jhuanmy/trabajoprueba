@@ -15,6 +15,11 @@ include "../menu/menu.php";
             <small id="emailHelp" class="form-text text-muted">Ingrese el titulo de tu post.</small>
         </div>
         <div class="form-group">
+            <label for="exampleInputsubtitulo">Subtitulo</label>
+            <input type="text" class="form-control" name="ingresosubtitulo" id="exampleInputsubtitulo" aria-describedby="titulo" placeholder="subtitlo">
+            <small id="emailHelp" class="form-text text-muted">ingrese un subtitulo</small>
+        </div>
+        <div class="form-group">
             <label for="exampleFormControlTextarea1">Contenido</label>
             <textarea class="form-control" name="ingresocontenido" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>

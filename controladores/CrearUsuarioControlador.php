@@ -14,11 +14,11 @@ if (!isset($_POST['submit']))
     $usuario = $_POST['ingresonombre'];
     $correoActual = $_POST['ingresocorreo'];
 
-    $con = mysqli_connect($host, $user, $pw)
-    or die("Problemas al conectar al servidor");
+//    $con = mysqli_connect($host, $user, $pw)
+//    or die("Problemas al conectar al servidor");
 
-    mysqli_select_db($con, $db)
-    or die("problemas al conectar con db");
+//    mysqli_select_db($con, $db)
+//    or die("problemas al conectar con db");
 
 
     mysqli_query($con, "INSERT INTO usuarios (usuario,nombre,correo,password)

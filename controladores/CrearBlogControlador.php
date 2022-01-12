@@ -1,6 +1,10 @@
 <?php
 session_start();
 include '../config/conexion.php';
+include "../clases/autenticacion.php";
+
+$verificar=new autenticacion();
+$verificar->verificarsesion("inicie sesion para realizar esta accion","");
 
 
 if (!isset($_POST['submit']))
@@ -12,6 +16,7 @@ if (!isset($_POST['submit']))
 //    $_POST['ingresocontrasena'] == $_POST['ingresocontrasena'])
 {
     $titulo = $_POST['ingresotitulo'];
+    $subtitulo=$_POST['ingresosubtitulo'];
     $contenido = $_POST['ingresocontenido'];
     $id_usuarioActual = $_SESSION['idusuario'];
     $fecha = date('m/d/Y h:i:s', time());
@@ -34,8 +39,8 @@ if (!isset($_POST['submit']))
 //
     copy($_FILES['foto']['tmp_name'], $destino);
     echo "archivo subido exitosamente" . "<br>";
-    mysqli_query($con, "INSERT INTO post (titulo,contenido,id_usuario,imagen)
- VALUE('" . $_POST['ingresotitulo'] . "','" . $_POST['ingresocontenido'] . "','$id_usuarioActual','$ruta')");
+    mysqli_query($con, "INSERT INTO post (titulo,subtitulo,contenido,id_usuario,imagen)
+ VALUE('" . $_POST['ingresotitulo'] . "','$subtitulo','" . $_POST['ingresocontenido'] . "','$id_usuarioActual','$ruta')");
 //    $nombre=$_FILES['foto']['name'];
 //    echo "<img src=\"documentos/$nombre\"><br>";
 //

@@ -2,7 +2,10 @@
 include "../../config/conexion.php";
 include "../../web/head.php";
 include "../menu/menu.php";
+include "../../clases/autenticacion.php";
 
+$verificar=new autenticacion();
+$verificar->verificarsesion('<h4 class="text-center alert-danger">inicia sesion para realizar esto</h4>',"");
 $idpost=$_GET['id_post'];
    $post=mysqli_query($con,"SELECT * FROM post where id_post='$idpost'");
 
@@ -13,7 +16,7 @@ foreach ($post as $items){
 ?>
 
 <div class="container">
-    <form method="post" action="../../controladores/editarpostControlador.php">
+    <form method="post" action="../../controladores/editarpostControlador.php" enctype="multipart/form-data">
         <div class="form-group">
             <input type="hidden" name="idpost" value="<?php echo $items['id_post']?>">
             <label for="exampleInputtitulo">Titulo</label>
@@ -23,6 +26,11 @@ foreach ($post as $items){
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Contenido</label>
             <textarea class="form-control" name="ingresocontenido" id="exampleFormControlTextarea1"  rows="3"><?php echo $items['contenido']?></textarea>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Imagen</label>
+
+            <input type="file" required class="form-control" name="foto" id="foto"  rows="3">
         </div>
         <br>
         <button type="submit" class="btn btn-primary">Actualizar</button>

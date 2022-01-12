@@ -1,4 +1,5 @@
 <?php
+
 include "../../web/head.php";
 include "../menu/menu.php";
 
@@ -11,7 +12,7 @@ or die("Problemas al conectar al servidor");
 
 mysqli_select_db($con, $db)
 or die("problemas al conectar con db");
-$id_usuarioActual = $_SESSION['idusuario'];
+//$id_usuarioActual = $_SESSION['idusuario'];
 
 $listablog = mysqli_query($con, "SELECT * FROM `post` join usuarios on post.id_usuario=usuarios.id_usuario  ORDER BY `post`.`id_post` DESC");
 ?>
@@ -25,45 +26,54 @@ $listablog = mysqli_query($con, "SELECT * FROM `post` join usuarios on post.id_u
 
         <?php
         foreach ($listablog as $items) {
-            echo " <div class='d-flex text-muted pt-3'>";?>
-            <a href='verpost.php?id_post=<?php echo $items['id_post'];?>'<?php echo " class='list-group-item list-group-item-action d-flex gap-3 py-3' aria-current='true'>
+        echo " <div class='d-flex text-muted pt-3'>"; ?>
+        <a href='verpost.php?id_post=<?php echo $items['id_post']; ?>'<?php echo " class='list-group-item list-group-item-action d-flex gap-3 py-3' aria-current='true'>
                 <div class='col-8'>
 
                     <p class='pb-3 mb-0 small lh-sm'>
-                        <strong class='d-block text-gray-dark''>" . $items['usuario'] . "</strong>";
+                 <strong class='d-block text-gray-dark''>" . $items['id_post'] . "</strong>
+                        <strong class='d-block text-gray-dark''>" . $items['usuario'] . "</strong>
+            <strong class='d-block text-gray-dark''>" . $items['titulo'] . "</strong>";
 
-            echo $items['contenido'] . "</p>    </div>";
+        echo $items['contenido'] . "</p>    </div>";
 
-      echo "<div class='col-1'>
+        echo "<div class='col-1'>
         <p class='pb-2 mb-0 small lh-sm'>
-            <strong class='d-block text-gray-dark'>Fecha</strong>".$items['fecha_registro']."</p>
+            <strong class='d-block text-gray-dark'>Fecha</strong>" . $items['fecha_registro'] . "</p>
     </div>";
 
-      echo " <div class='col-1'>
+        echo " <div class='col-1'>
         <p class='pb-2 mb-0 small lh-sm '>
-            <strong class='d-block text-gray-dark'>Autor</strong>".$items['nombre']."</p></div>" ;
+            <strong class='d-block text-gray-dark'>Autor</strong>" . $items['nombre'] . "</p></div>";
 
 
-
-       echo " <div class='text-center col-1'>
-        <img class='profile-user-img img-fluid img-circle' src=".$items['imagen']."
+        echo " <div class='text-center col-1'>
+        <img class='profile-user-img img-fluid img-circle' src=" . $items['imagen'] . "
              alt='User profile picture'>
-    </div></a>
+    </div></a>"; ?>
+
+
+            <?php
+            $usuariopost = $items['id_usuario'];
+            if (isset($_SESSION['idusuario'])) {
+            if ($usuariopost == $idusuario){
+            echo "<button type='button' class='btn btn-secondary'" ?>
+           onclick="window.location.href='../../web/cuentausuario/editarblog.php?id_post=<?php echo $items['id_post'] ?>'">Editar
+            </button>
+            <?php
+            }
+
+            }else{
+
+            }
+            ?>
 
 
     </div>
-
-    ";
-
-
-        } ?>
+    <?php
+    }
+    ?>
 
 
-
-
-
-
-
-
-
-    </div></main>
+    </div>
+</main>

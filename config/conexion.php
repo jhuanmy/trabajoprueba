@@ -3,6 +3,7 @@ $host="localhost";
 $user="root";
 $pw="";
 $db="trabajo";
+
 $con=mysqli_connect($host,$user,$pw)
 or die("Problemas al conectar al servidor");
 

@@ -12,7 +12,4 @@ echo "mensaje enviado";
 // mail("juan13miguel@gmail.com","prueba","Este es el cuerpo del mensaje");
 header("refresh:1;url=../web/contacto.php");
 
-
-
-
 }

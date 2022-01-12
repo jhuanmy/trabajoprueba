@@ -1,4 +1,5 @@
 <?php
+//require_once "../../clases/autenticacion.php";
 session_start();
 
 ?>
@@ -28,12 +29,13 @@ session_start();
                 ?>
             </ul>
 
-            <!--            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">-->
-            <!--                <input type="search" class="form-control form-control-dark" placeholder="Buscar..." aria-label="Search">-->
-            <!--            </form>-->
+
 
             <div class="text-end">
                 <?php
+
+
+
                 if (isset($_SESSION['usuarioActual'])) {
 //asignar a variable
                     $usernameSesion = $_SESSION['usuarioActual'];
@@ -46,6 +48,7 @@ session_start();
 
 
                 } else {
+//
                     ?>
                     <button type="button" class="btn btn-outline-light me-2"
                             onclick="window.location.href='/web/autenticacion/iniciarsesion.php'">Iniciar Sesion
