@@ -30,7 +30,7 @@ foreach ($post as $items){
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Imagen</label>
 
-            <input type="file" required class="form-control" name="foto" id="foto"  rows="3">
+            <input type="file"  class="form-control" name="foto" id="foto"  rows="3">
         </div>
         <br>
         <button type="submit" class="btn btn-primary">Actualizar</button>

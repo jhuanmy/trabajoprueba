@@ -1,6 +1,9 @@
 <?php
 include "../../web/head.php";
 include "../menu/menu.php";
+include "../../clases/autenticacion.php";
+$verificar=new autenticacion();
+$verificar->verificarsesion("inicie sesion para realizar esta accion","");
 ?>
 <head>
 

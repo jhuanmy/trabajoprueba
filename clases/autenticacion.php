@@ -56,7 +56,7 @@ class autenticacion
     {
         if (isset($_SESSION['usuarioActual'])) {
             $this->datoshtml = $html;
-echo $this->datoshtml;
+            echo $this->datoshtml;
         } else {
             echo $mensaje;
 
